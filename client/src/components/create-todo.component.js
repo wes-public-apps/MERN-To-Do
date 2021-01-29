@@ -1,5 +1,8 @@
+//import libraries
 import React, { Component } from 'react';
+import axios from 'axios';
 
+//define class to represent the component for creating a new todo item
 export default class CreateTodo extends Component {
     constructor(props){
         super(props);
@@ -48,6 +51,17 @@ export default class CreateTodo extends Component {
         console.log(`Todo Responsible: ${this.state.todo_responsible}`);
         console.log(`Todo Priority: ${this.state.todo_priority}`);
         
+        //create a shell object to hold todo item data. this will be serialized by axios
+        const newTodo = {
+            todo_description: this.state.todo_description,
+            todo_responsible: this.state.todo_responsible,
+            todo_priority: this.state.todo_priority,
+            todo_completed: this.state.todo_completed
+        }
+        //use axios to complete HTTP post request
+        axios.post('http://localhost:4000/todos/add',newTodo).then(res => console.log(res.data));
+        
+        //reinitialize form to be empty
         this.setState({
             todo_description: '',
             todo_responsible: '',
