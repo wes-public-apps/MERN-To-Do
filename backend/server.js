@@ -58,7 +58,7 @@ todoRoutes.route('/:id').get((req,res)=>{
 //add a todo item
 todoRoutes.route('/add').post((req,res)=>{
     let todo = new Todo(req.body);
-    Todo.save()
+    todo.save()
     .then(todo => {
         res.status(200).json({'todo':'todo added successfully'});
     })
