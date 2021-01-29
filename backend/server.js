@@ -6,6 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+let Todo = require('./todo.model');
 
 //Define Constants
 const PORT = 4000;
@@ -31,7 +32,7 @@ const todoRoutes = express.Router();
 
 // retrieve all todos
 todoRoutes.route('/').get((req,res) => {
-    Todo.find( //I have concerns here that Todois not being found from model export
+    Todo.find(
         (err, todos)=>{
             if(err){
                 console.log(err);
