@@ -62,7 +62,7 @@ export default class EditTodo extends Component{
     //set completed flag
     onChangeTodoCompleted(e){
         this.setState({
-            todo_completed: e.target.value
+            todo_completed: !this.state.todo_completed
         });
     }
 
@@ -147,7 +147,7 @@ export default class EditTodo extends Component{
                                 type="checkbox"
                                 name="completedCheckbox"
                                 onChange={this.onChangeTodoCompleted}
-                                checked={this.state.todo_completed}
+                                checked={this.state.todo_completed===true}
                                 value={this.state.todo_completed}
                                 />
                         <label className="form-check-label" htmlFor="completedCheckbox">
