@@ -13,6 +13,12 @@ You must install the following on your machine:
 
 
 #run instructions
+Start Server
+- open the backend directory in the terminal
+- run "nodemon server"
+
+Start Client
+-
 
 #future work
 I will change this project to use docker next.
