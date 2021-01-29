@@ -18,7 +18,8 @@ Start Server
 - run "nodemon server"
 
 Start Client
--
+- open the client directory in the terminal
+- type "npm start"
 
 #future work
 I will change this project to use docker next.
