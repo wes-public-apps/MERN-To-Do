@@ -12,7 +12,7 @@ let Todo = require('./todo.model');
 const PORT = 4000;
 
 app.use(cors());
-app.unsubscribe(bodyParser.json());
+app.use(bodyParser.json());
 
 //Connect application to mongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/todos',{ useNewParser: true})
@@ -29,6 +29,7 @@ app.listen(PORT, () => {
 
 //Handle traffic routing
 const todoRoutes = express.Router();
+app.use('/todos',todoRoutes);
 
 // retrieve all todos
 todoRoutes.route('/').get((req,res) => {
@@ -56,15 +57,15 @@ todoRoutes.route('/:id').get((req,res)=>{
 });
 
 //add a todo item
-todoRoutes.route('/add').post((req,res)=>{
+todoRoutes.route('/add').post((req, res) => {
     let todo = new Todo(req.body);
     todo.save()
-    .then(todo => {
-        res.status(200).json({'todo':'todo added successfully'});
-    })
-    .catch(err =>{
-        res.status(400).send("adding new todo failed");
-    });
+        .then(todo => {
+            res.status(200).json({'todo': 'todo added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('adding new todo failed');
+        });
 });
 
 //edit a todo item
@@ -86,5 +87,3 @@ todoRoutes.route('/update/:id').post((req,res)=>{
         }
     });
 });
-
-app.use('/todos',todoRoutes);

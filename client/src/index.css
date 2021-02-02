@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Style for complete todo items */
+.completed{
+  text-decoration: line-through;
+}
